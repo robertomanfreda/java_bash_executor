@@ -1,28 +1,25 @@
-package com.example.demo;
+package com.robertomanfreda.java.bash.executor;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.Base64;
 
-@SpringBootApplication
-public class DemoApplication {
+public class JavaBashExecutor {
 
     public static void main(String[] args) throws IOException {
-        SpringApplication.run(DemoApplication.class, args);
-
         Files.lines(new File("/Users/roberto/Desktop/demo/src/main/resources/test1.sh").toPath())
                 .forEach(line -> {
-                    Process p = null;
+                    Process process;
                     try {
                         String[] cmd = {"/bin/bash", "-c", "base64 -D<<<" + toBase64(line) + "|/bin/bash"};
-                        p = Runtime.getRuntime().exec(cmd);
-                        p.waitFor();
-                        BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                        process = Runtime.getRuntime().exec(cmd);
+                        process.waitFor();
+                        BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
                         System.out.println(stdInput.readLine());
-                        System.out.println(p.exitValue());
+                        System.out.println(process.exitValue());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
