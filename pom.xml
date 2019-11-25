@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>java_bash_executor</name>
     <description>A library to programmatically execute sh scripts</description>
 
     <properties>
