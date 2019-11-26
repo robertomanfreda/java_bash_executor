@@ -1,4 +1,6 @@
-package com.robertomanfreda.java.bash.executor;
+package bash.executor;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,6 +9,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.Base64;
 
+@Slf4j
 public class JavaBashExecutor {
 
     public static void main(String[] args) throws IOException {
@@ -18,14 +21,13 @@ public class JavaBashExecutor {
                         process = Runtime.getRuntime().exec(cmd);
                         process.waitFor();
                         BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                        System.out.println(stdInput.readLine());
-                        System.out.println(process.exitValue());
+                        log.debug(stdInput.readLine());
+                        log.debug("{}", process.exitValue());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 })
         ;
-
     }
 
     private static String toBase64(String value) {
