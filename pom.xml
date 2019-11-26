@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.roberto.manfreda.java.bash.executor</groupId>
-    <artifactId>demo</artifactId>
+    <groupId>com.robertomanfreda</groupId>
+    <artifactId>java-bash-executor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>java_bash_executor</name>
     <description>A library to programmatically execute sh scripts</description>
